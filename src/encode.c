@@ -22,3 +22,9 @@ int main(int argc, char *argv[])
     if (src_image == NULL || secret_file == NULL || out_image == NULL)
     {
         printf("Error: Unable to open one or more files\
+            
+/* Copy BMP header (first 54 bytes) */
+unsigned char header[54];
+
+fread(header, 1, 54, src_image);
+fwrite(header, 1, 54, out_image);
